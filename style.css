@@ -1,0 +1,52 @@
+h4 {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+
+body.pozadina {
+    background-color: #000000;
+}
+
+.img-thumbnail {
+    width: 300px !important;
+    height: 300px !important;
+    display: inline-block;
+    *display: inline;
+    /* ie7 fix */
+    float: none;
+    /* this is the part that makes it work */
+}
+
+/* .messageInfo {
+    text-align: center;
+    vertical-align: middle;
+} */
+
+body>div.container-fluid {
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+}
+
+.messageInfo {
+    padding: none !important;
+    margin-bottom: none !important;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 16px;
+}
+
+.alert {
+    max-width: fit-content;
+    font-size: 10px !important;
+    padding: 0px;
+    margin-bottom: 0px;
+    border: 0px solid transparent;
+    border-radius: 5px;
+}
+
+.center-align {
+    margin: 0 auto;
+}
