@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2018 at 02:21 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Generation Time: May 22, 2020 at 07:07 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,8 +18,45 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webprog`
+-- Database: `quickfix`
 --
+CREATE DATABASE IF NOT EXISTS `quickfix` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `quickfix`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adds`
+--
+
+CREATE TABLE `adds` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `archive` varchar(8) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `adds`
+--
+
+INSERT INTO `adds` (`id`, `title`, `description`, `picture`, `archive`, `date`) VALUES
+(1, 'Huawei P7, napuknut ekran', 'Tražim nekoga za popravak napuknutog ekrana na  Huawei P7. Ponude može na tel. 099-347-4325', '1-52.jpg', 'N', '2018-01-09 00:00:00'),
+(2, 'Parking kamera, ugradnja', 'Tražim nekoga za ugradnju stražnje parking kamere u Reno Clio 2006. god. Ponude na tel. 091-345-3456, može i whatsapp', '2-48.jpg', 'N', '2020-05-28 02:05:49'),
+(3, 'Lenovo T560, zamjena paste na CPU', 'Tražim nekoga tko se razumije i ima iskustva u održavanje računala, za zamjenu paste na CPU i čiščenje od prašine. Kontak: 092-432-4322', '3-79.jpg', 'N', '2020-05-28 02:06:32'),
+(5, 'PS4, ne pali', 'Nemože se upaliti, ako netko zna obaviti dijagnostiku. Može ponude na tel: 091-678-6786', '5-90.jpg', 'N', '2020-05-09 05:06:40'),
+(6, 'Galaxy S8, mikrofon', 'Pomoć popravak mikrofona, tel: 099-234-2344', '6-78.jpg', 'Y', '2020-05-13 01:10:59'),
+(15, 'Acer TravelMate 330', 'Notebook je jako spor, ako netko zna napraviti dijagnostiku u čemu je problem. Kontakt: 092-345-4353', '15-24.jpg', 'N', '2020-03-10 01:11:05'),
+(18, 'Montiranje peći', 'Ako netko ima iskustva sa strujnim instalacijama ugrdbenih pećnica. Kontakt: 091-432-4322: ', '', 'Y', '2020-03-10 01:11:20'),
+(19, 'PC je jako spor', 'Predugo se pali i dosta se smrzava. Kontakt: 099-7898989', '', 'N', '2020-05-12 01:11:30'),
+(21, 'Oglassss', 'Oglas', '21-70.jpg', 'Y', '2020-04-07 21:43:06'),
+(24, 'Noa tablet', 'Neradi punjač. Kontakt: 099-345-3454', '24-60.jpg', 'N', '2020-05-20 23:59:46'),
+(25, 'Ne radi mi truba na autu', 'I tražim nekoga da ju popravi, radi se o Renault Clio autu crvene boje :)', '25-13.jpg', 'N', '2020-05-21 02:03:04'),
+(26, 'Zamjena HDD u Notebooku', 'Kontakt: 091-234-2344', '26-66.jpg', 'N', '2020-05-21 02:03:15'),
+(27, 'Oglas pere', 'Oglas\r\n', '', 'Y', '2020-05-03 21:43:14'),
+(29, 'PSU', 'neispravan konektor. Može dijagnostika. Kontakt :099-234-2344', '29-55.jpg', 'N', '2020-05-22 18:28:52');
 
 -- --------------------------------------------------------
 
@@ -151,12 +189,12 @@ INSERT INTO `countries` (`id`, `country_code`, `country_name`) VALUES
 (112, 'KZ', 'Kazakhstan'),
 (113, 'KE', 'Kenya'),
 (114, 'KI', 'Kiribati'),
-(115, 'KP', 'Korea, Democratic People''s Republic of'),
+(115, 'KP', 'Korea, Democratic People\'s Republic of'),
 (116, 'KR', 'Korea, Republic of'),
 (117, 'XK', 'Kosovo'),
 (118, 'KW', 'Kuwait'),
 (119, 'KG', 'Kyrgyzstan'),
-(120, 'LA', 'Lao People''s Democratic Republic'),
+(120, 'LA', 'Lao People\'s Democratic Republic'),
 (121, 'LV', 'Latvia'),
 (122, 'LB', 'Lebanon'),
 (123, 'LS', 'Lesotho'),
@@ -283,9 +321,79 @@ INSERT INTO `countries` (`id`, `country_code`, `country_name`) VALUES
 (244, 'ZM', 'Zambia'),
 (245, 'ZW', 'Zimbabwe');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `useradds`
+--
+
+CREATE TABLE `useradds` (
+  `user_id` int(11) NOT NULL,
+  `adds_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `useradds`
+--
+
+INSERT INTO `useradds` (`user_id`, `adds_id`) VALUES
+(16, 1),
+(16, 2),
+(16, 3),
+(21, 5),
+(21, 6),
+(21, 15),
+(22, 18),
+(22, 19),
+(23, 21),
+(23, 24),
+(23, 25),
+(24, 26),
+(26, 27),
+(21, 29);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `country` char(2) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `archive` enum('Y','N') NOT NULL DEFAULT 'N',
+  `isAdmin` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `country`, `date`, `archive`, `isAdmin`) VALUES
+(16, 'Admin', 'Admin', 'admin@gmail.com', 'admin', '$2y$12$nO9RqlprufLi7pH5rLrzDuuTTdAXZvJjFKGd6wxPAkDhgU1t4cbYu', 'HR', '2020-05-20 20:04:45', 'N', 1),
+(21, 'Goran', 'Jaic', 'gjaic23@gmail.com', 'gjaic', '$2y$12$YbeQ6bzcecnx8BChX56QL.525hNdKWyH6FTcLSwAR3XWYEYyft0NG', 'AT', '2020-05-20 23:20:49', 'N', 0),
+(22, 'Gargamel', 'Garga', 'gargamel@gmail.com', 'gargi', '$2y$12$9C3tPj1cKfAnmiPv72ShV.g5g0m6OT0YTOOYz5XWSLaGaD65.hBa6', 'UZ', '2020-05-21 22:55:39', 'Y', 0),
+(23, 'Mrki', 'Medved', 'mrkii@net.hr', 'MrkiM', '$2y$12$c2jCbhy.Hfsr1fGinIUnuecrGaXpGwf.YMj420WWL9Iiy8TqLb1rO', 'AZ', '2020-05-21 22:31:15', 'N', 0),
+(24, 'Pero', 'Perica', 'pero@perica.com', 'peroo', '$2y$12$beGH2eFW1Os6M0gYtBosfOHKTX71EgrL3fWtcG/zXeg.VtMDrJRZO', 'UZ', '2020-05-21 00:01:59', 'N', 0),
+(25, 'Ivo', 'Ivić', 'ivic@gmail.com', 'iivic', '$2y$12$eb.13U8adwxSjALZq1SlleHKyaFbNh0FGQuXZJSyEqC5.vbDa2g3u', 'SC', '2020-05-21 22:56:14', 'N', 0),
+(26, 'Pero', 'Peric', 'peric@peric.com', 'peric', '$2y$12$iY/xkm1Y7NVNWrPGOF./POliFOWq0iGQUSm/7s0mZEi8.UeA7a87q', 'AT', '2020-05-22 15:08:58', 'N', 0),
+(27, 'Lolek', 'Lolek', 'lolek@lolek.com', 'lolek', '$2y$12$seaVnvPz8yFaASZRIjJrJe8UB2wLnbXp/Yfm0TLerKatyXnOYHJcy', 'DS', '2020-05-22 16:29:37', 'N', 0);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `adds`
+--
+ALTER TABLE `adds`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `countries`
@@ -294,14 +402,34 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `adds`
+--
+ALTER TABLE `adds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

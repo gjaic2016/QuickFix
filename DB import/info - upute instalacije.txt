@@ -3,7 +3,6 @@ UPUTE
 - skinuti projekt
 - skinuti XAMPP sa stranice: https://www.apachefriends.org/index.html
 - pokrenuti XAMPP
-- pokrenuti Apache server i MySQL server
+- pokrenuti Apache server i MySQL server na tipku "START"
 - u pretraživacu pokrenuti kontrolnu plocu phpMyAdmin (link: http://localhost/phpmyadmin/index.php)
-- kreirati "webprog" bazu u mysql-u
-- potrebno je uraditi import tablica: countries.sql, adds.sql, users.sql u bazu MySQL
+- import baze napravit odabirom na "Import" tab, odabraditi file na choose file "quickfix.sql", potrditi tipkom "Go"
