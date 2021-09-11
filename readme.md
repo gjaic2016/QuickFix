@@ -1,23 +1,20 @@
-# Projektni zadatak
-Predmet Napredne Web Aplikacije
-
 # QuickFix
-Aplikacija namijenjena za stručnu podršku i ponudu osobnih usluga 
+An application intended for professional support and the offer of personal services
 
-# Korištene web tehnologije
+# Used technologies
 PHP, HTML, BOOTSTRAP, MySQL RDBMS
-Koristi Bcrypt enkripciju za skladištenje lozinke.
+Uses Bcrypt encryption to store passwords.
 
 # API
-Korišteni API:  
+Used API:  
 http://api.hnb.hr/tecajn/v2
 
-# UPUTE
+# Instruction
 
-- skinuti projekt
-- skinuti XAMPP sa stranice: https://www.apachefriends.org/index.html
-- pokrenuti XAMPP
-- pokrenuti Apache server i MySQL server na tipku "START"
-- u pretraživacu pokrenuti kontrolnu plocu phpMyAdmin (link: http://localhost/phpmyadmin/index.php)
-- import baze napravit odabirom na "Import" tab, odabraditi file na choose file "quickfix.sql", potrditi tipkom "Go"
+- download project
+- download XAMPP from page: https://www.apachefriends.org/index.html
+- start XAMPP
+- start Apache server and MySQL server on button "START"
+- launch the control panel in the browser phpMyAdmin (link: http://localhost/phpmyadmin/index.php)
+- import base done by selecting "Import" tab, select file "quickfix.sql", confirm on button "Go"
 
